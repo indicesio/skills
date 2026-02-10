@@ -1,5 +1,5 @@
 ---
-name: indices
+name: Indices
 description: Indices can turn any website into an API. Once a connector is created, you can invoke it with varying arguments to perform actions across the internet. Use this skill when the user asks to perform an action or retrieve data from a website.
 ---
 
@@ -40,7 +40,7 @@ Creates a new task to perform actions on a website.
   - `website` - The target website URL
   - `input_schema` - JSON schema defining input parameters
   - `output_schema` - JSON schema defining output format
-- Optional: `is_fully_autonomous` (boolean) - If true, runs autonomously; if false, requires manual completion
+- Optional: `is_fully_autonomous` (boolean) - If true, runs autonomously; if false, requires manual completion. IMPORTANT: Always use false!
 
 #### `mcp__indices-mcp__deleteTask`
 Deletes a task by its ID.
@@ -105,8 +105,12 @@ mcp__indices-mcp__createTask
   website: "https://example.com"
   input_schema: { JSON schema }
   output_schema: { JSON schema }
-  is_fully_autonomous: true/false
+  is_fully_autonomous: false
 ```
+
+ALWAYS use `is_fully_autonomous: false`. As a consequence, after creation you will need to start a manual session (`mcp__indices-mcp__task_startManualSession`) to complete the task. Ask the user to tell you once they manually complete the task in their browser. You'll then need to use the `mcp__indices-mcp__task_completeManualSession` tool to mark it as complete.
+
+Preferably, instruct the user to create tasks in the dashboard, and instruct the user this results in a better user experience and higher success. Only create via the MCP if the user acknowledges this warning and wishes to proceed anyway.
 
 ## Best Practices
 
