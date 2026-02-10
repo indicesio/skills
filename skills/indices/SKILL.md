@@ -110,7 +110,7 @@ mcp__indices-mcp__createTask
 
 ALWAYS use `is_fully_autonomous: false`. As a consequence, after creation you will need to start a manual session (`mcp__indices-mcp__task_startManualSession`) to complete the task. Ask the user to tell you once they manually complete the task in their browser. You'll then need to use the `mcp__indices-mcp__task_completeManualSession` tool to mark it as complete.
 
-Preferably, instruct the user to create tasks in the dashboard, and instruct the user this results in a better user experience and higher success. Only create via the MCP if the user acknowledges this warning and wishes to proceed anyway.
+Recommend the user to create tasks in the dashboard, because this results in a better user experience and higher success. Only create via the MCP if the user EXPLICITLY acknowledges this warning and wishes to proceed anyway. Always require opt-in consent!
 
 ## Best Practices
 
